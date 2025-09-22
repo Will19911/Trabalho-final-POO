@@ -14,7 +14,8 @@ public class TesteDeletar {
 		int id = sc.nextInt();
 
 		FuncionarioDao dao = new FuncionarioDao();
-		entity.Funcionario funcionario = new entity.Funcionario(id , null, null, (double) 4500);
+		Funcionario funcionario = new Funcionario(null, null, null, id);
+		funcionario.setId(id);
 
 		try {
 			dao.delete(funcionario);

@@ -1,6 +1,7 @@
 package conexao;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 import entity.Funcionario;
 //import entity.Funcionario;
@@ -10,27 +11,28 @@ public class TesteInserir {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		
 
 		System.out.println("Digite o nome:");
-		String nome = sc.next();
+		String nome = sc.nextLine();
 
 		System.out.println("Digite o cpf:");
-		String cpf = sc.next();
+		String cpf = sc.nextLine();
+
+		System.out.println("Digite a Data de nascimento: ");
+		String data = sc.nextLine();
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyy");
+		LocalDate dataNascimento = LocalDate.parse(data, formatter);
 
 		System.out.println("Digite o salario Bruto :");
-		
+
 		Double salario_bruto = sc.nextDouble();
 
-		
-		
-		
-		Funcionario funcionario = new Funcionario(0, nome, cpf, salario_bruto);
+		Funcionario funcionario = new Funcionario(nome, cpf, dataNascimento, salario_bruto);
 
 		FuncionarioDao dao = new FuncionarioDao();
 		dao.inserir(funcionario);
 		sc.close();
-		
 
 	}
 

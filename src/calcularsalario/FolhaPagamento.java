@@ -5,30 +5,37 @@ import java.time.LocalDate;
 import entity.Funcionario;
 
 public class FolhaPagamento {
-	private Double codigo;
 	private Funcionario funcionario;
 	private LocalDate dataPagamento;
+    private Double salarioBruto;
 	private Double descontoINSS;
 	private Double descontoIR;
 	private Double salarioLiquido;
+	
 
-	public FolhaPagamento(Double codigo, Funcionario funcionario, LocalDate dataPagamento, Double descontoINSS,
-			Double descontoIR, Double salarioLiquido) {
+	public FolhaPagamento(Funcionario funcionario, LocalDate dataPagamento) {
 		super();
-		this.codigo = codigo;
+
 		this.funcionario = funcionario;
 		this.dataPagamento = dataPagamento;
-		this.descontoINSS = descontoINSS;
-		this.descontoIR = descontoIR;
-		this.salarioLiquido = salarioLiquido;
+		this.descontoINSS = funcionario.calcularINSS();
+		this.descontoIR = funcionario.calcularIR();
+		this.salarioLiquido = funcionario.calcularSalarioLiquido();
+		this.salarioBruto = funcionario.getSalarioBruto();
 	}
 
-	public Double getCodigo() {
-		return codigo;
+	@Override
+	public String toString() {
+		return " funcionario: " + funcionario + ", dataPagamento: " + dataPagamento + ", descontoINSS: " + descontoINSS
+				+ ", descontoIR: " + descontoIR + ", salarioBruto" + ", salarioLiquido: " + salarioLiquido;
 	}
 
-	public void setCodigo(Double codigo) {
-		this.codigo = codigo;
+	public Double getSalarioBruto() {
+		return salarioBruto;
+	}
+
+	public void setSalarioBruto(Double salarioBruto) {
+		this.salarioBruto = salarioBruto;
 	}
 
 	public Funcionario getFuncionario() {

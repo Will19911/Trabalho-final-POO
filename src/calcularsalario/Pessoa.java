@@ -3,20 +3,30 @@ package calcularsalario;
 import java.time.LocalDate;
 
 public abstract class Pessoa {
-	private String nome;
-	private String cpf;
+	protected int id;
+	protected String nome;
+	protected String cpf;
 	protected LocalDate dataNascimento;
 
 	public Pessoa(String nome, String cpf, LocalDate dataNascimento) {
 		super();
+		
 		this.nome = nome;
 		this.cpf = cpf;
 		this.dataNascimento = dataNascimento;
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	@Override
 	public String toString() {
-		return "Nome: " + nome + ", cpf: " + cpf + ", dataNascimento: " + dataNascimento;
+		return "Nome: " + nome + "\nCpf: " + cpf + "\nDataNascimento: " + dataNascimento;
 	}
 
 	public String getNome() {
@@ -42,5 +52,7 @@ public abstract class Pessoa {
 	public void setDataNascimento(LocalDate dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
+
+	
 
 }
