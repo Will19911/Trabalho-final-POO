@@ -1,4 +1,4 @@
-Aqui está um arquivo README.md para o seu projeto, formatado para o GitHub.
+arquivo README.md para o projeto:
 
 # Sistema de Gestão de Funcionários
 
